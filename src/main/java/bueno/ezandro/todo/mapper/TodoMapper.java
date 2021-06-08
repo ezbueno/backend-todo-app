@@ -16,7 +16,8 @@ public interface TodoMapper {
 	Todo toModel(TodoDTO todoDTO);
 
 	TodoDTO toDTO(Todo todo);
-
+	
 	List<TodoDTO> toDTO(List<Todo> todos);
+
 
 }
