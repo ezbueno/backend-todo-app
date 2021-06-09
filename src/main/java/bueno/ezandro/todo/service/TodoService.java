@@ -31,18 +31,12 @@ public class TodoService {
 
 	@Transactional(readOnly = true)
 	public TodoDTO findById(Long id) {
-		return this.findTodoById(id);
-	}
-
-	private TodoDTO findTodoById(Long id) {
 		var optionalTodo = this.todoRepository.findById(id);
 
-		if (!optionalTodo.isPresent()) {
-			throw new TodoNotFoundException(MessageUtil.TODO_NOT_FOUND + id);
+		if (optionalTodo.isPresent()) {
+			return todoMapper.toDTO(optionalTodo.get());
 		}
-
-		return todoMapper.toDTO(optionalTodo.get());
-
+		throw new TodoNotFoundException(MessageUtil.TODO_NOT_FOUND + id);
 	}
 
 }
