@@ -1,5 +1,6 @@
 package bueno.ezandro.todo.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,15 @@ public class TodoService {
 	public void delete(Long id) {
 		this.findById(id);
 		this.todoRepository.deleteById(id);
+	}
+
+	@Transactional
+	public TodoDTO markAsDone(Long id) {
+		var todoDTO = this.findById(id);
+		todoDTO.setDone(true);
+		todoDTO.setDoneDate(LocalDateTime.now());
+		var savedTodo = this.todoRepository.save(todoMapper.toModel(todoDTO));
+		return todoMapper.toDTO(savedTodo);
 	}
 
 }
