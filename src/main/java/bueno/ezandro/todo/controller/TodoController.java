@@ -41,17 +41,16 @@ public class TodoController {
 	public TodoDTO findById(@PathVariable Long id) {
 		return this.todoService.findById(id);
 	}
-	
+
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public List<TodoDTO> findByAll() {
 		return this.todoService.findAll();
 	}
-	
+
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void delete(@PathVariable Long id) {
 		this.todoService.delete(id);
 	}
-	
 
 }
