@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import bueno.ezandro.todo.model.dto.TodoDTO;
 import bueno.ezandro.todo.service.TodoService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/api/todos")
 public class TodoController {
