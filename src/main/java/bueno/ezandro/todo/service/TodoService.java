@@ -48,4 +48,10 @@ public class TodoService {
 		return todoMapper.toDTO(todos);
 	}
 
+	@Transactional
+	public void delete(Long id) {
+		this.findById(id);
+		this.todoRepository.deleteById(id);
+	}
+
 }
